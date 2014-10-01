@@ -165,7 +165,7 @@ public class Noeud {
      * 
      * @param str la valeur
      */
-    public void ajouterCle(String str) {
+    public void ajouterCle(String str, Object pointeur) {
         // On ajoute la valeur au bon endroit
         boolean ajouter = false;
         
@@ -283,6 +283,9 @@ public class Noeud {
 
     public void setTauxRemplissage(int tauxRemplissage) {
         this.tauxRemplissage = tauxRemplissage;
+    }
+
+    void insererRacine(String cle, String valeur) {
     }
 
 
