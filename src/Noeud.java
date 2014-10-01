@@ -76,6 +76,11 @@ public class Noeud {
         nouveauNoeud.calculTauxRemplissage();
 
         // Modification du noeud parent
+        if(this.racine) {
+            // On créer un nouveau pour la racine
+            noeudPere = new Noeud();
+        }
+        
         noeudPere.ajouterValeur(cle, nouveauNoeud);
         
         
