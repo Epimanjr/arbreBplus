@@ -72,11 +72,25 @@ public class Arbre {
             }
         }
         
-        // On renvoit null si on a pas trouvé la valeur
+        /*// On renvoit null si on a pas trouvé la valeur
         if(!contient) {
             n = null;
-        }
+        }*/
         
         return n;
+    }
+    
+    /**
+     * Insertion dans un arbre.
+     * 
+     * @param cle clé 
+     * @param valeur valeurs
+     */
+    public void insertion(String cle, String valeur) {
+        // On recherche le noeud dans lequel on va insérer la valeur
+        Noeud n = this.recherche(cle);
+        
+        // On l'insère au bon endroit
+        n.insererRacine(cle, valeur);
     }
 }
