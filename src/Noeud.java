@@ -130,12 +130,34 @@ public class Noeud {
      * @return le résultat
      */
     public String recherche(String str) {
-        // Récupération de l'indice
-        int indice = rechercheIndice(str);
+        // TODO
+        return "";
+    }
+    
+    /**
+     * Recherche le noeud suivant pour trouver la valeur en paramètre
+     * 
+     * @param str valeur cherchée
+     * @return le noeud en question
+     */
+    public Noeud rechercheNoeudSuivant(String str) {
+        // Initialisation du résultat
+        Noeud n = null;
         
-        // Récupération de la valeur
-        String res = this.getTabPointeurs().get(indice).toString();
-        return res;
+        // Parcours de la liste des clés
+        for(int i=0;i<tabCle.size();i++) {
+            if(str.compareTo(tabCle.get(i)) == (-1)) {
+                n = (Noeud) tabPointeurs.get(i);
+            }
+        }
+        
+        // Si non initialisé, alors c'est le dernier pointeur
+        // <-> str est plus grande que la dernière clé
+        if(n == null) {
+            n = (Noeud) tabPointeurs.get(tabPointeurs.size() - 1);
+        }
+        
+        return n;
     }
 
     /**
