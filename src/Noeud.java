@@ -26,7 +26,7 @@ public class Noeud {
     /**
      * Tableau de pointeurs.
      */
-    private ArrayList<Noeud> tabPointeurs;
+    private ArrayList<Object> tabPointeurs;
 
     /**
      * Est-ce que ce Noeud est la racine de l'arbre ?
@@ -65,7 +65,7 @@ public class Noeud {
         String cle = tabCle.get(indice);
         for (int i = indice; i < tabCle.size(); i++) {
             // Ajout de la clé dans le nouveau Noeud
-            nouveauNoeud.ajouterValeur(tabCle.get(indice), null);
+            nouveauNoeud.ajouterValeur(tabCle.get(indice));
 
             // Suppression de cette clé du Noeud actuel
             this.tabCle.remove(indice);
@@ -81,16 +81,21 @@ public class Noeud {
             noeudPere = new Noeud();
         }
         
-        noeudPere.ajouterValeur(cle, nouveauNoeud);
+        noeudPere.ajouterValeur(cle);
         
         
         // On renvoit le nouveau noeud
         return nouveauNoeud;
     }
     
+    /**
+     * Méthode fusion de la classe Noeud, fusionne deux noeuds en un seul noeud
+     * 
+     * @param n le noeud qui doit disparaître
+     */
     public void fusion(Noeud n) {
         n.getTabCle().stream().forEach((str) -> {
-            ajouterValeur(str, null);
+            ajouterValeur(str);
         });
     }
     
@@ -100,11 +105,32 @@ public class Noeud {
      * @param str valeur cherché
      * @return indice
      */
-    public int recherche(String str) {
+    public int rechercheIndice(String str) {
         return this.tabCle.indexOf(str);
     }
+    
+    
+    /**
+     * Fonction recherche de la classe Noeud
+     * 
+     * @param str la valeur cherchée
+     * @return le résultat
+     */
+    public String recherche(String str) {
+        // Récupération de l'indice
+        int indice = rechercheIndice(str);
+        
+        // Récupération de la valeur
+        String res = this.getTabPointeurs().get(indice).toString();
+        return res;
+    }
 
-    public void ajouterValeur(String str, Noeud n) {
+    /**
+     * Ajoute la valeur dans le noeud
+     * 
+     * @param str la valeur
+     */
+    public void ajouterValeur(String str) {
         // On ajoute la valeur au bon endroit
         boolean ajouter = false;
         
@@ -127,10 +153,6 @@ public class Noeud {
                 tabCle.add(str);
             }
         }
-        
-       
-        
-        
 
         // Si il y a un débordement
         if (tabCle.size() > ordre) {
@@ -138,11 +160,19 @@ public class Noeud {
         }
     }
     
+    /**
+     * Méthode d'ajout d'un pointeur à un noeud intermédiaire
+     * 
+     * @param n le pointeur
+     */
     public void ajouterPointeur(Noeud n) {
+        Noeud noeudCaste;
+        
         // Parcours de la liste des pointeurs
         int indice = -1;
         for(int i=0;i<tabPointeurs.size();i++) {
-            if(n.getTabCle().get(0).compareTo(tabPointeurs.get(i).getTabCle().get(0)) == (-1)) {
+            noeudCaste  = (Noeud) tabPointeurs.get(i);
+            if(n.getTabCle().get(0).compareTo(noeudCaste.getTabCle().get(0)) == (-1)) {
                 indice = i;
                 break;
             }
@@ -175,13 +205,15 @@ public class Noeud {
         this.tabCle = tabCle;
     }
 
-    public ArrayList<Noeud> getTabPointeurs() {
+    public ArrayList<Object> getTabPointeurs() {
         return tabPointeurs;
     }
 
-    public void setTabPointeurs(ArrayList<Noeud> tabPointeurs) {
+    public void setTabPointeurs(ArrayList<Object> tabPointeurs) {
         this.tabPointeurs = tabPointeurs;
     }
+
+    
 
     
 
