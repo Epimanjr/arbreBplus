@@ -48,6 +48,19 @@ public class Noeud {
      */
     private int tauxRemplissage;
 
+    
+    public static Noeud creerNoeudRacine(int ordre, String cle, String valeur) {
+        // Création du noeud
+        Noeud noeud = new Noeud();
+        noeud.setRacine(true);
+        noeud.setFeuille(true);
+        noeud.setOrdre(ordre);
+        noeud.ajouterCle(cle);
+        noeud.ajouterPointeur(valeur);
+        
+        return noeud;
+    }
+    
     /**
      * Méthode split.
      * @return le nouveau noeud
@@ -65,7 +78,7 @@ public class Noeud {
         String cle = tabCle.get(indice);
         for (int i = indice; i < tabCle.size(); i++) {
             // Ajout de la clé dans le nouveau Noeud
-            nouveauNoeud.ajouterValeur(tabCle.get(indice));
+            nouveauNoeud.ajouterCle(tabCle.get(indice));
 
             // Suppression de cette clé du Noeud actuel
             this.tabCle.remove(indice);
@@ -81,7 +94,7 @@ public class Noeud {
             noeudPere = new Noeud();
         }
         
-        noeudPere.ajouterValeur(cle);
+        noeudPere.ajouterCle(cle);
         
         
         // On renvoit le nouveau noeud
@@ -95,7 +108,7 @@ public class Noeud {
      */
     public void fusion(Noeud n) {
         n.getTabCle().stream().forEach((str) -> {
-            ajouterValeur(str);
+            ajouterCle(str);
         });
     }
     
@@ -130,7 +143,7 @@ public class Noeud {
      * 
      * @param str la valeur
      */
-    public void ajouterValeur(String str) {
+    public void ajouterCle(String str) {
         // On ajoute la valeur au bon endroit
         boolean ajouter = false;
         
@@ -165,14 +178,15 @@ public class Noeud {
      * 
      * @param n le pointeur
      */
-    public void ajouterPointeur(Noeud n) {
+    public void ajouterPointeur(Object n) {
         Noeud noeudCaste;
+        Noeud nn = (Noeud)n;
         
         // Parcours de la liste des pointeurs
         int indice = -1;
         for(int i=0;i<tabPointeurs.size();i++) {
             noeudCaste  = (Noeud) tabPointeurs.get(i);
-            if(n.getTabCle().get(0).compareTo(noeudCaste.getTabCle().get(0)) == (-1)) {
+            if(nn.getTabCle().get(0).compareTo(noeudCaste.getTabCle().get(0)) == (-1)) {
                 indice = i;
                 break;
             }
