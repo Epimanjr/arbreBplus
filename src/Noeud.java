@@ -285,7 +285,7 @@ public class Noeud {
         this.tauxRemplissage = tauxRemplissage;
     }
 
-    void insererRacine(String cle, String valeur) {
+    void insererFeuille(String cle, String valeur) {
     }
 
 

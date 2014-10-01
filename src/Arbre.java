@@ -91,6 +91,6 @@ public class Arbre {
         Noeud n = this.recherche(cle);
         
         // On l'insère au bon endroit
-        n.insererRacine(cle, valeur);
+        n.insererFeuille(cle, valeur);
     }
 }
