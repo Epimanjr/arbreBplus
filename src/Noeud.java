@@ -93,6 +93,16 @@ public class Noeud {
             ajouterValeur(str, null);
         });
     }
+    
+    /**
+     * Recherche de l'indice d'une valeur cherchée
+     * 
+     * @param str valeur cherché
+     * @return indice
+     */
+    public int recherche(String str) {
+        return this.tabCle.indexOf(str);
+    }
 
     public void ajouterValeur(String str, Noeud n) {
         // On ajoute la valeur au bon endroit
