@@ -15,26 +15,13 @@ import Arbre.Noeud;
  */
 public class AffichageConsole {
 
-    /**
-     * Notre objet arbre.
-     */
-    public Arbre arbre;
-
-    /**
-     * Initialisation d'un objet qui permet l'affichage en mode console.
-     *
-     * @param b Notre objet arbre
-     */
-    public AffichageConsole(Arbre b) {
-        this.arbre = b;
-    }
 
     /**
      * Méthode qui permet d'afficher l'arbre.
      *
      * @param b Un arbre.
      */
-    public void afficherArbre(Arbre b) {
+    public static void afficherArbre(Arbre b) {
         // On affiche la racine
         afficherNoeud(b.getRacine(), 1);
     }
@@ -45,7 +32,7 @@ public class AffichageConsole {
      * @param n un Noeud.
      * @param niveau niveau d'affichage (pour l'indentation)
      */
-    public void afficherNoeud(Noeud n, int niveau) {
+    public static void afficherNoeud(Noeud n, int niveau) {
         // Gestion des indentations
         String indent = "";
         for (int i = 0; i <= niveau; i++) {
@@ -57,11 +44,13 @@ public class AffichageConsole {
         if (n.isFeuille() || n.getTabPointeurs().isEmpty()) {
             // On affiche les clés.
             for (String str : n.getTabCle()) {
-                System.out.println(indent + str);
+                System.out.println(indent + "--->" +str);
             }
         } else {
             /* Cas général : avec une liste de pointeurs vers les Noeuds intermédiaires */
             int i = 0;
+            System.out.println("Taille clé : "+n.getTabCle().size());
+            System.out.println("Taille pointeurs : "+n.getTabPointeurs().size());
             for (i = 0; i < n.getTabCle().size(); i++) {
                 // Appel récursif
                 afficherNoeud((Noeud) n.getTabPointeurs().get(i), (niveau + 1));

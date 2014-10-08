@@ -22,12 +22,12 @@ public class Noeud {
     /**
      * Tableau des clés.
      */
-    private ArrayList<String> tabCle;
+    private ArrayList<String> tabCle = new ArrayList<>();
 
     /**
      * Tableau de pointeurs.
      */
-    private ArrayList<Object> tabPointeurs;
+    private ArrayList<Object> tabPointeurs = new ArrayList<>();
 
     /**
      * Est-ce que ce Noeud est la racine de l'arbre ?
@@ -49,14 +49,16 @@ public class Noeud {
      */
     private int tauxRemplissage;
 
-    public static Noeud creerNoeudRacine(int ordre, String cle, String valeur) {
+    public Arbre arbre;
+
+    public static Noeud creerNoeudRacine(int ordre, String cle, String valeur, Arbre b) {
         // Création du noeud
         Noeud noeud = new Noeud();
         noeud.setRacine(true);
         noeud.setFeuille(true);
         noeud.setOrdre(ordre);
-        noeud.ajouterCle(cle);
-        noeud.ajouterPointeur(valeur);
+        noeud.ajouterValeur(cle, valeur);
+        noeud.arbre = b;
 
         return noeud;
     }
@@ -67,6 +69,15 @@ public class Noeud {
      * @return le nouveau noeud
      */
     public Noeud split() {
+        // Si le Noeud père n'existe pas, alors on le créer
+        if (noeudPere == null) {
+            noeudPere = new Noeud();
+            noeudPere.setRacine(true);
+            noeudPere.setOrdre(ordre);
+            noeudPere.setFeuille(false);
+            // C'est la nouvelle racine de l'arbre
+            arbre.setRacine(noeudPere);
+        }
         // Création du nouveau Noeud
         Noeud nouveauNoeud = new Noeud();
         nouveauNoeud.setNoeudPere(noeudPere);
@@ -75,12 +86,24 @@ public class Noeud {
         nouveauNoeud.setOrdre(ordre);
 
         // Ajout des valeurs
+        System.out.println("Taille du noeud sur lequel on fait le split : " + tabCle.size());
+        for (String str : tabCle) {
+            System.out.print(str + ";");
+        }
+        System.out.println("indice 2 " + tabCle.get(2));
+        System.out.println("indice 3 " + tabCle.get(3));
+
         int indice = tabCle.size() / 2;
+        System.out.println("indice : " + indice);
         String cle = tabCle.get(indice);
         for (int i = indice; i < tabCle.size(); i++) {
             // Ajout de la clé dans le nouveau Noeud
-            nouveauNoeud.ajouterCle(tabCle.get(indice));
+            System.out.print("\nAjout de " + tabCle.get(i) + " dans le nouveau noeud");
+            nouveauNoeud.ajouterCle(tabCle.get(i));
 
+        }
+
+        for (int i = 0; i < indice; i++) {
             // Suppression de cette clé du Noeud actuel
             this.tabCle.remove(indice);
         }
@@ -89,13 +112,7 @@ public class Noeud {
         this.calculTauxRemplissage();
         nouveauNoeud.calculTauxRemplissage();
 
-        // Modification du noeud parent
-        if (this.racine) {
-            // On créer un nouveau pour la racine
-            noeudPere = new Noeud();
-        }
-
-        
+        noeudPere.ajouterPointeur(this);
         noeudPere.ajouterPointeur(nouveauNoeud);
         noeudPere.ajouterCle(cle);
 
@@ -172,25 +189,29 @@ public class Noeud {
         int indice = -1;
 
         // Si plus petit que le premier élément, alors on l'insère au début
-        if (str.compareTo(tabCle.get(0)) == (-1)) {
-            tabCle.add(0, str);
-            indice = 0;
-        } else {
-            for (int i = 1; i < tabCle.size(); i++) {
-                // Si plus petit, on l'ajoute avant
-                if (str.compareTo(tabCle.get(i)) == (-1)) {
-                    tabCle.add(i, str);
-                    indice = i;
-                    ajouter = true;
-                    break;
+        if (!tabCle.isEmpty()) {
+            if (str.compareTo(tabCle.get(0)) == (-1)) {
+                tabCle.add(0, str);
+                indice = 0;
+            } else {
+                for (int i = 1; i < tabCle.size(); i++) {
+                    // Si plus petit, on l'ajoute avant
+                    if (str.compareTo(tabCle.get(i)) == (-1)) {
+                        tabCle.add(i, str);
+                        indice = i;
+                        ajouter = true;
+                        break;
+                    }
+                }
+
+                // Cas de fin
+                if (!ajouter) {
+                    // Ajout de fin de liste
+                    tabCle.add(str);
                 }
             }
-
-            // Cas de fin
-            if (!ajouter) {
-                // Ajout de fin de liste
-                tabCle.add(str);
-            }
+        } else {
+            tabCle.add(str);
         }
 
         if (indice == (-1)) {
@@ -207,7 +228,7 @@ public class Noeud {
 
     /**
      * Ajoute une clé dans l'arbre et gère les pointeurs
-     * 
+     *
      * @param str clé à ajouter
      */
     public void ajouterCle(String str) {
@@ -215,26 +236,31 @@ public class Noeud {
         boolean ajouter = false;
         int indice = -1;
 
-        // Si plus petit que le premier élément, alors on l'insère au début
-        if (str.compareTo(tabCle.get(0)) == (-1)) {
-            tabCle.add(0, str);
-            indice = 0;
-        } else {
-            for (int i = 1; i < tabCle.size(); i++) {
-                // Si plus petit, on l'ajoute avant
-                if (str.compareTo(tabCle.get(i)) == (-1)) {
-                    tabCle.add(i, str);
-                    indice = i;
-                    ajouter = true;
-                    break;
+        // Si plus petit que le premier élément, alors on l'insère au début7
+        if (!tabCle.isEmpty()) {
+            if (str.compareTo(tabCle.get(0)) == (-1)) {
+                tabCle.add(0, str);
+                indice = 0;
+            } else {
+                for (int i = 1; i < tabCle.size(); i++) {
+                    // Si plus petit, on l'ajoute avant
+                    if (str.compareTo(tabCle.get(i)) == (-1)) {
+                        tabCle.add(i, str);
+                        indice = i;
+                        ajouter = true;
+                        break;
+                    }
+                }
+
+                // Cas de fin
+                if (!ajouter) {
+                    // Ajout de fin de liste
+                    tabCle.add(str);
                 }
             }
-
-            // Cas de fin
-            if (!ajouter) {
-                // Ajout de fin de liste
-                tabCle.add(str);
-            }
+        } else {
+            // Ajout de fin de liste
+            tabCle.add(str);
         }
 
         // Si il y a un débordement
@@ -253,20 +279,23 @@ public class Noeud {
         Noeud nn = (Noeud) n;
 
         // Parcours de la liste des pointeurs
-        int indice = -1;
-        for (int i = 0; i < tabPointeurs.size(); i++) {
-            noeudCaste = (Noeud) tabPointeurs.get(i);
-            if (nn.getTabCle().get(0).compareTo(noeudCaste.getTabCle().get(0)) == (-1)) {
-                indice = i;
-                break;
+        if (!tabPointeurs.contains(nn)) {
+            int indice = -1;
+            for (int i = 0; i < tabPointeurs.size(); i++) {
+                noeudCaste = (Noeud) tabPointeurs.get(i);
+                if (nn.getTabCle().get(0).compareTo(noeudCaste.getTabCle().get(0)) == (-1)) {
+                    indice = i;
+                    break;
+                }
+            }
+
+            if (indice == (-1)) {
+                tabPointeurs.add(n);
+            } else {
+                tabPointeurs.add(indice, n);
             }
         }
 
-        if (indice == (-1)) {
-            tabPointeurs.add(n);
-        } else {
-            tabPointeurs.add(indice, n);
-        }
     }
 
     public void calculTauxRemplissage() {

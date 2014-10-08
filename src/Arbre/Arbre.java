@@ -21,7 +21,7 @@ public class Arbre {
      */
     public Arbre(int ordre, String cle, String valeur) {
         // Initialisation de la racine
-        this.racine = Noeud.creerNoeudRacine(ordre, cle, valeur);
+        this.racine = Noeud.creerNoeudRacine(ordre, cle, valeur, this);
     }
     
     /**
@@ -88,8 +88,8 @@ public class Arbre {
         Noeud n = this.recherche(cle);
         
         // Si la clé n'existe pas déjà dans l'arbre
-        if (n.rechercheIndice(cle) != (-1)) {
-        
+        if (n.rechercheIndice(cle) == (-1)) {
+                    
             // On l'insère au bon endroit
             n.ajouterValeur(cle,valeur);
         
