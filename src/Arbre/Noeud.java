@@ -288,6 +288,20 @@ public class Noeud {
     }
 
     void insererFeuille(String cle, String valeur) {
+        // S'il y a de la place dans la feuille
+        if (this.tauxRemplissage < 100) {
+            // On insère la clé
+            
+            // On fait pointer la clé vers la valeur
+            
+        // S'il n'y a plus de place
+        } else {
+            // On split le noeud plein
+            Noeud nouveau_noeud = this.split();
+            
+            // On insère dans le nouveau noeud
+            nouveau_noeud.insererFeuille(cle, valeur);
+        }
     }
 
 
