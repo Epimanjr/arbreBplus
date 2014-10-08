@@ -1,3 +1,5 @@
+package Arbre;
+
 
 import java.util.ArrayList;
 
