@@ -91,7 +91,7 @@ public class Arbre {
         if (n.rechercheIndice(cle) != (-1)) {
         
             // On l'insère au bon endroit
-            n.insererFeuille(cle, valeur);
+            n.ajouterValeur(cle,valeur);
         
         }
     }
