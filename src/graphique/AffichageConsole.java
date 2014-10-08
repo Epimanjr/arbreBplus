@@ -36,15 +36,21 @@ public class AffichageConsole {
      */
     public void afficherArbre(Arbre b) {
         // On affiche la racine
-        afficherNoeud(b.getRacine());
+        afficherNoeud(b.getRacine(), 1);
     }
 
     /**
      * Méthode qui permet d'afficher un Noeud.
      *
      * @param n un Noeud.
+     * @param niveau niveau d'affichage (pour l'indentation)
      */
-    public void afficherNoeud(Noeud n) {
-
+    public void afficherNoeud(Noeud n, int niveau) {
+        /* Traitement des cas particuliers */
+        
+        // Si c'est une feuille
+        if(n.isFeuille()) {
+            
+        }
     }
 }
