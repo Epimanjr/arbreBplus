@@ -1,5 +1,7 @@
 package Arbre;
 
+import graphique.AffichageConsole;
+
 /**
  *
  * @author Maxime BLAISE

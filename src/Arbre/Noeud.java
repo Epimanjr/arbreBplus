@@ -164,9 +164,22 @@ public class Noeud {
 
         // Parcours de la liste des clés
         for (int i = 0; i < tabCle.size(); i++) {
-            if (str.compareTo(tabCle.get(i)) == (-1)) {
-                n = (Noeud) tabPointeurs.get(i);
+            try {
+                // On essaie de voir si c'est un nombre
+                int nstr = new Integer(str);
+                int ncle = new Integer(tabCle.get(i));
+                
+                if(nstr < ncle) {
+                    n = (Noeud) tabPointeurs.get(i);
+                    break;
+                }
+            } catch (Exception e) {
+                if (str.compareTo(tabCle.get(i)) == (-1)) {
+                    n = (Noeud) tabPointeurs.get(i);
+                    break;
+                }
             }
+
         }
 
         // Si non initialisé, alors c'est le dernier pointeur
