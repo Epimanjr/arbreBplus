@@ -19,10 +19,10 @@ public class PrincipaleTest {
         Arbre b = new Arbre(3, "5", "toto");
         b.insertion("20", "antoine");
         b.insertion("10", "maxime");
-        //b.insertion("40", "Denniss");
-        //b.insertion("30", "geoffrey");
-        //b.insertion("25", "monsieur");
-        //b.insertion("35", "UN");
+        b.insertion("40", "Denniss");
+        b.insertion("30", "geoffrey");
+        b.insertion("25", "monsieur");
+        b.insertion("35", "UN");
         //b.insertion("15", "TROIS");
        // b.insertion("80", "NEUF");
         //b.insertion("90", "DIX");
