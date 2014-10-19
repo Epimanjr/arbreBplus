@@ -93,6 +93,7 @@ public class Noeud {
         nouveauNoeud.setNoeudPere(noeudPere);
         nouveauNoeud.setRacine(false);
         nouveauNoeud.setFeuille(feuille);
+        System.out.println("Nouveau noeud = feuille ?" + nouveauNoeud.isFeuille());
         nouveauNoeud.setOrdre(ordre);
 
         // Ajout des valeurs
