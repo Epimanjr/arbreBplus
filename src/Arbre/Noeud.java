@@ -70,6 +70,7 @@ public class Noeud {
      */
     public Noeud split() {
         // Si le Noeud père n'existe pas, alors on le créer
+        boolean nouvelleRacine = false;
         if (noeudPere == null) {
             noeudPere = new Noeud();
             noeudPere.setRacine(true);
@@ -77,6 +78,7 @@ public class Noeud {
             noeudPere.setFeuille(false);
             // C'est la nouvelle racine de l'arbre
             arbre.setRacine(noeudPere);
+            nouvelleRacine = true;
         }
         // Création du nouveau Noeud
         Noeud nouveauNoeud = new Noeud();
@@ -112,9 +114,11 @@ public class Noeud {
         this.calculTauxRemplissage();
         nouveauNoeud.calculTauxRemplissage();
 
-  
         noeudPere.ajouterValeur(cle, nouveauNoeud);
-
+        if(nouvelleRacine) {
+            noeudPere.getTabPointeurs().add(0, this);
+        }
+        
         // On renvoit le nouveau noeud
         return nouveauNoeud;
     }
