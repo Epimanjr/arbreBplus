@@ -28,9 +28,9 @@ public class PrincipaleTest {
         b.insertion("10", "DIX");
         b.insertion("11", "ONZE");
 
-        System.out.println("\nTaille de la racine : " + b.getRacine().getTabCle().size());
+       /* System.out.println("\nTaille de la racine : " + b.getRacine().getTabCle().size());
 
         // Affichage de l'arbre
-        AffichageConsole.afficherArbre(b);
+        AffichageConsole.afficherArbre(b);*/
     }
 }

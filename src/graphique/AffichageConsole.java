@@ -49,8 +49,6 @@ public class AffichageConsole {
         } else {
             /* Cas général : avec une liste de pointeurs vers les Noeuds intermédiaires */
             int i = 0;
-            System.out.println("Taille clé : "+n.getTabCle().size());
-            System.out.println("Taille pointeurs : "+n.getTabPointeurs().size());
             for (i = 0; i < n.getTabCle().size(); i++) {
                 // Appel récursif
                 afficherNoeud((Noeud) n.getTabPointeurs().get(i), (niveau + 1));
