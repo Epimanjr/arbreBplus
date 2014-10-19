@@ -203,7 +203,7 @@ public class Noeud {
 
         //On teste si c'est un entier
         boolean entier = false;
-        Integer nstr;
+        Integer nstr = 0;
         try {
             nstr = new Integer(str);
             entier = true;
@@ -214,7 +214,7 @@ public class Noeud {
         if (!tabCle.isEmpty()) {
             if (entier) {
                 Integer tmp = new Integer(tabCle.get(0));
-                if (str < tmp) {
+                if (nstr < tmp) {
                     ajouter = true;
 
                 }
@@ -236,7 +236,7 @@ public class Noeud {
 
                     if (entier) {
                         Integer tmp = new Integer(tabCle.get(i));
-                        if (str < tmp) {
+                        if (nstr < tmp) {
                             ajouter = true;
                         }
                     } else {
