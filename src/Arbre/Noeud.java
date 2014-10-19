@@ -1,5 +1,6 @@
 package Arbre;
 
+import graphique.AffichageConsole;
 import java.util.ArrayList;
 
 /*
@@ -91,21 +92,11 @@ public class Noeud {
         nouveauNoeud.setOrdre(ordre);
 
         // Ajout des valeurs
-        System.out.println("Taille du noeud sur lequel on fait le split : " + tabCle.size());
-        for (String str : tabCle) {
-            System.out.print(str + ";");
-        }
-        System.out.println("indice 2 " + tabCle.get(2));
-        System.out.println("indice 3 " + tabCle.get(3));
-
         int indice = tabCle.size() / 2;
-        System.out.println("indice : " + indice);
         String cle = tabCle.get(indice);
         for (int i = indice; i < tabCle.size(); i++) {
             // Ajout de la clé dans le nouveau Noeud
-            System.out.print("\nAjout de " + tabCle.get(i) + " dans le nouveau noeud");
             nouveauNoeud.ajouterCle(tabCle.get(i));
-
         }
 
         for (int i = 0; i < indice; i++) {
@@ -122,6 +113,7 @@ public class Noeud {
             noeudPere.getTabPointeurs().add(0, this);
         }
 
+        AffichageConsole.afficherArbre(arbre);
         // On renvoit le nouveau noeud
         return nouveauNoeud;
     }
