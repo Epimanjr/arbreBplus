@@ -115,10 +115,10 @@ public class Noeud {
         nouveauNoeud.calculTauxRemplissage();
 
         noeudPere.ajouterValeur(cle, nouveauNoeud);
-        if(nouvelleRacine) {
+        if (nouvelleRacine) {
             noeudPere.getTabPointeurs().add(0, this);
         }
-        
+
         // On renvoit le nouveau noeud
         return nouveauNoeud;
     }
@@ -270,7 +270,13 @@ public class Noeud {
         if (indice == (-1)) {
             this.tabPointeurs.add(pointeur);
         } else {
-            this.tabPointeurs.add(indice, pointeur);
+            if (this.isFeuille()) {
+                this.tabPointeurs.add(indice, pointeur);
+
+            } else {
+                this.tabPointeurs.add(indice + 1, pointeur);
+
+            }
         }
 
         // Si il y a un débordement
