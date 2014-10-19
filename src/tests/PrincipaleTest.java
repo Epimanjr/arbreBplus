@@ -21,7 +21,8 @@ public class PrincipaleTest {
         b.insertion("4", "maxime");
         b.insertion("7", "Denniss");
         b.insertion("2", "geoffrey");
-        //b.insertion("8", "monsieur");
+        b.insertion("8", "monsieur");
+        b.insertion("1", "UN");
 
         System.out.println("\nTaille de la racine : " + b.getRacine().getTabCle().size());
 
