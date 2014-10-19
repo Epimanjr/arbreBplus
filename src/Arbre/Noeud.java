@@ -112,9 +112,8 @@ public class Noeud {
         this.calculTauxRemplissage();
         nouveauNoeud.calculTauxRemplissage();
 
-        noeudPere.ajouterPointeur(this);
-        noeudPere.ajouterPointeur(nouveauNoeud);
-        noeudPere.ajouterCle(cle);
+  
+        noeudPere.ajouterValeur(cle, nouveauNoeud);
 
         // On renvoit le nouveau noeud
         return nouveauNoeud;
