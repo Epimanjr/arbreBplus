@@ -100,7 +100,6 @@ public class Noeud {
         int indice = tabCle.size() / 2;
         String cle = tabCle.get(indice);
 
-        nouveauNoeud.getTabPointeurs().add(0, new Noeud(arbre));
 
         if (nouveauNoeud.isFeuille()) {
             for (int i = indice; i < tabCle.size(); i++) {
@@ -109,9 +108,9 @@ public class Noeud {
             }
         } else {
             for (int i = indice; i < tabCle.size(); i++) {
-                // Ajout de la clé dans le nouveau Noeud
-                nouveauNoeud.ajouterValeur(tabCle.get(i), tabPointeurs.get(i + 1));
+                nouveauNoeud.getTabPointeurs().add(tabPointeurs.get(i + 1));
             }
+            nouveauNoeud.getTabCle().add(tabCle.get(tabCle.size()-1));
         }
 
         for (int i = 0; i < indice; i++) {
