@@ -74,6 +74,7 @@ public class Noeud {
      */
     public Noeud split() {
         System.out.println("** AVANT SPLIT **");
+        System.out.println("Noeud sur lequel on fait le split = feuille ? " + this.isFeuille());
         AffichageConsole.afficherArbre(arbre);
         
         // Si le Noeud père n'existe pas, alors on le créer
