@@ -51,7 +51,7 @@ public class Noeud {
     private int tauxRemplissage;
 
     public Arbre arbre;
-    
+
     public Noeud(Arbre a) {
         this.arbre = a;
     }
@@ -76,7 +76,7 @@ public class Noeud {
         System.out.println("** AVANT SPLIT **");
         System.out.println("Noeud sur lequel on fait le split = feuille ? " + this.isFeuille());
         AffichageConsole.afficherArbre(arbre);
-        
+
         // Si le Noeud père n'existe pas, alors on le créer
         boolean nouvelleRacine = false;
         if (noeudPere == null) {
@@ -119,7 +119,7 @@ public class Noeud {
             noeudPere.getTabPointeurs().add(0, this);
         }
 
-         System.out.println("** APRES SPLIT **");
+        System.out.println("** APRES SPLIT **");
         AffichageConsole.afficherArbre(arbre);
         // On renvoit le nouveau noeud
         return nouveauNoeud;
@@ -276,7 +276,12 @@ public class Noeud {
                 this.tabPointeurs.add(indice, pointeur);
 
             } else {
-                this.tabPointeurs.add(indice + 1, pointeur);
+                if (indice + 1 >= this.tabPointeurs.size()) {
+                    this.tabPointeurs.add(pointeur);
+                } else {
+                    this.tabPointeurs.add(indice + 1, pointeur);
+
+                }
 
             }
         }
