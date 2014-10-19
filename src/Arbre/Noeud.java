@@ -101,7 +101,8 @@ public class Noeud {
         String cle = tabCle.get(indice);
         for (int i = indice; i < tabCle.size(); i++) {
             // Ajout de la clé dans le nouveau Noeud
-            nouveauNoeud.ajouterCle(tabCle.get(i));
+            //nouveauNoeud.ajouterCle(tabCle.get(i));
+            nouveauNoeud.ajouterValeur(tabCle.get(i), tabPointeurs.get(i));
         }
 
         for (int i = 0; i < indice; i++) {
