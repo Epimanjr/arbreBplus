@@ -168,8 +168,8 @@ public class Noeud {
                 // On essaie de voir si c'est un nombre
                 int nstr = new Integer(str);
                 int ncle = new Integer(tabCle.get(i));
-                
-                if(nstr < ncle) {
+
+                if (nstr < ncle) {
                     n = (Noeud) tabPointeurs.get(i);
                     break;
                 }
@@ -201,18 +201,55 @@ public class Noeud {
         boolean ajouter = false;
         int indice = -1;
 
+        //On teste si c'est un entier
+        boolean entier = false;
+        Integer nstr;
+        try {
+            nstr = new Integer(str);
+            entier = true;
+        } catch (Exception e) {
+        }
+
         // Si plus petit que le premier élément, alors on l'insère au début
         if (!tabCle.isEmpty()) {
-            if (str.compareTo(tabCle.get(0)) == (-1)) {
+            if (entier) {
+                Integer tmp = new Integer(tabCle.get(0));
+                if (str < tmp) {
+                    ajouter = true;
+
+                }
+            } else {
+                if (str.compareTo(tabCle.get(0)) == (-1)) {
+                    ajouter = true;
+                }
+
+            }
+
+            if (ajouter) {
                 tabCle.add(0, str);
                 indice = 0;
-            } else {
+            }
+
+            if (!ajouter) {
                 for (int i = 1; i < tabCle.size(); i++) {
                     // Si plus petit, on l'ajoute avant
-                    if (str.compareTo(tabCle.get(i)) == (-1)) {
+
+                    if (entier) {
+                        Integer tmp = new Integer(tabCle.get(i));
+                        if (str < tmp) {
+                            ajouter = true;
+                        }
+                    } else {
+                        if (str.compareTo(tabCle.get(i)) == (-1)) {
+                            ajouter = true;
+
+                        }
+
+                    }
+
+                    if (ajouter) {
                         tabCle.add(i, str);
                         indice = i;
-                        ajouter = true;
                         break;
                     }
                 }
