@@ -23,6 +23,10 @@ public class PrincipaleTest {
         b.insertion("2", "geoffrey");
         b.insertion("8", "monsieur");
         b.insertion("1", "UN");
+        b.insertion("3", "TROIS");
+        b.insertion("9", "NEUF");
+        b.insertion("10", "DIX");
+        b.insertion("11", "ONZE");
 
         System.out.println("\nTaille de la racine : " + b.getRacine().getTabCle().size());
 
