@@ -50,15 +50,18 @@ public class Noeud {
     private int tauxRemplissage;
 
     public Arbre arbre;
+    
+    public Noeud(Arbre a) {
+        this.arbre = a;
+    }
 
     public static Noeud creerNoeudRacine(int ordre, String cle, String valeur, Arbre b) {
         // Création du noeud
-        Noeud noeud = new Noeud();
+        Noeud noeud = new Noeud(b);
         noeud.setRacine(true);
         noeud.setFeuille(true);
         noeud.setOrdre(ordre);
         noeud.ajouterValeur(cle, valeur);
-        noeud.arbre = b;
 
         return noeud;
     }
@@ -72,7 +75,7 @@ public class Noeud {
         // Si le Noeud père n'existe pas, alors on le créer
         boolean nouvelleRacine = false;
         if (noeudPere == null) {
-            noeudPere = new Noeud();
+            noeudPere = new Noeud(arbre);
             noeudPere.setRacine(true);
             noeudPere.setOrdre(ordre);
             noeudPere.setFeuille(false);
@@ -81,7 +84,7 @@ public class Noeud {
             nouvelleRacine = true;
         }
         // Création du nouveau Noeud
-        Noeud nouveauNoeud = new Noeud();
+        Noeud nouveauNoeud = new Noeud(arbre);
         nouveauNoeud.setNoeudPere(noeudPere);
         nouveauNoeud.setRacine(false);
         nouveauNoeud.setFeuille(feuille);
