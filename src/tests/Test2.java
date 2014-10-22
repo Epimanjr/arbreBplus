@@ -27,8 +27,11 @@ public class Test2 {
         b.insertion("80", "NEUF");
         b.insertion("90", "DIX");
         b.insertion("55", "ONZE");
-        //b.insertion("33", "DOUZE");
+        b.insertion("33", "DOUZE");
         b.insertion("34", "TREIZE");
+        b.insertion("60", "SOIXANTE");
+        b.insertion("85", "85");
+        b.insertion("86", "86");
 
         System.out.println("\nTaille de la racine : " + b.getRacine().getTabCle().size());
 
