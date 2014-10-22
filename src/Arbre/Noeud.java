@@ -98,6 +98,7 @@ public class Noeud {
 
         // Ajout des valeurs
         int indice = tabCle.size() / 2;
+       
         String cle = tabCle.get(indice);
 
 
@@ -107,17 +108,20 @@ public class Noeud {
                 nouveauNoeud.ajouterValeur(tabCle.get(i), tabPointeurs.get(i));
             }
         } else {
-            for (int i = indice; i < tabCle.size(); i++) {
+            for (int i =  indice; i < tabCle.size(); i++) {
                 // Changement du noeud père
                 ((Noeud)(tabPointeurs.get(i + 1))).setNoeudPere(nouveauNoeud);
                 nouveauNoeud.getTabPointeurs().add(tabPointeurs.get(i + 1));
             }
+            
+            // PROBLEME
             nouveauNoeud.getTabCle().add(tabCle.get(tabCle.size()-1));
             
             
         }
 
-        for (int i = 0; i < indice; i++) {
+        int indiceTmp = (ordre%2==0) ? indice+1 : indice;
+        for (int i = 0; i < indiceTmp; i++) {
             // Suppression de cette clé du Noeud actuel
             this.tabCle.remove(indice);
             
