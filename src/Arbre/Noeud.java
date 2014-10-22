@@ -118,7 +118,13 @@ public class Noeud {
         for (int i = 0; i < indice; i++) {
             // Suppression de cette clé du Noeud actuel
             this.tabCle.remove(indice);
-            this.tabPointeurs.remove(indice+1);
+            
+            if(this.isFeuille()) {
+                this.tabPointeurs.remove(indice);
+            } else {
+                this.tabPointeurs.remove(indice+1);
+            }
+            
         }
 
         // Mise à jour des deux taux de remplissage
