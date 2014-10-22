@@ -108,6 +108,8 @@ public class Noeud {
             }
         } else {
             for (int i = indice; i < tabCle.size(); i++) {
+                // Changement du noeud père
+                ((Noeud)(tabPointeurs.get(i + 1))).setNoeudPere(nouveauNoeud);
                 nouveauNoeud.getTabPointeurs().add(tabPointeurs.get(i + 1));
             }
             nouveauNoeud.getTabCle().add(tabCle.get(tabCle.size()-1));
