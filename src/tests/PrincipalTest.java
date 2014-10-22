@@ -12,7 +12,7 @@ import graphique.AffichageConsole;
  *
  * @author Maxime
  */
-public class PrincipaleTest {
+public class PrincipalTest {
 
     public static void main(String[] args) {
         // Création d'un arbre
