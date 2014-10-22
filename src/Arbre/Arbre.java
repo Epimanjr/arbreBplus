@@ -86,6 +86,7 @@ public class Arbre {
      * @param valeur valeurs
      */
     public void insertion(String cle, String valeur) {
+        System.out.println("\n\t***INSERTION DE " + cle + "***");
         // On recherche le noeud dans lequel on va insérer la valeur
         Noeud n = this.recherche(cle);
 
@@ -96,5 +97,7 @@ public class Arbre {
             n.ajouterValeur(cle, valeur);
 
         }
+        
+        System.out.println("\t***FIN INSERTION DE " + cle + "***\n");
     }
 }

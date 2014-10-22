@@ -15,7 +15,6 @@ import Arbre.Noeud;
  */
 public class AffichageConsole {
 
-
     /**
      * Méthode qui permet d'afficher l'arbre.
      *
@@ -44,7 +43,7 @@ public class AffichageConsole {
         if (n.isFeuille() || n.getTabPointeurs().isEmpty()) {
             // On affiche les clés.
             for (String str : n.getTabCle()) {
-                System.out.println(indent + "--->" +str);
+                System.out.println(indent + "--->" + str);
             }
         } else {
             /* Cas général : avec une liste de pointeurs vers les Noeuds intermédiaires */
@@ -61,32 +60,35 @@ public class AffichageConsole {
         }
 
     }
-    
+
     /**
      * Affiche toutes les clés d'un Noeud (pour le visualiser)
-     * 
+     *
      * @param n Le noeud.
      * @return chaîne
      */
     public static String afficheClesNoeud(Noeud n) {
+        String res = "";
         // Parcours des clés
-        n.getTabCle().stream().forEach((str) -> {
-            System.out.print(str + ";");
-        });
-        System.out.println("");
-        return "";
+        for (String str : n.getTabCle()) {
+            res += str + ";";
+        }
+        res+="\n";
+        return res;
     }
-    
+
     public static String affichePointeursNoeud(Noeud n) {
-        for(Object o: n.getTabPointeurs()) {
-            if(o instanceof Noeud) {
-                Noeud nn = (Noeud)o;
-                System.out.print(nn.getTabCle().get(0)+";");
+        String res = "";
+        for (Object o : n.getTabPointeurs()) {
+            if (o instanceof Noeud) {
+                Noeud nn = (Noeud) o;
+                res += nn.getTabCle().get(0) + ";";
             }
         }
-        System.out.println("");
-        
-        return "";
+
+        res += "\n";
+
+        return res;
     }
-    
+
 }
