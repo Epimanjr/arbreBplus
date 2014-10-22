@@ -172,6 +172,7 @@ public class Noeud {
      * @return le noeud en question
      */
     public Noeud rechercheNoeudSuivant(String str) {
+        System.out.println("** RECHERCHE DU NOEUD SUIVANT : ***\nListe des clés : " + AffichageConsole.afficheClesNoeud(this) + "\nListe des pointeurs : " + AffichageConsole.affichePointeursNoeud(this));
         // Initialisation du résultat
         Noeud n = null;
 
