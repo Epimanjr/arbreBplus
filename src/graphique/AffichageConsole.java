@@ -61,4 +61,17 @@ public class AffichageConsole {
         }
 
     }
+    
+    /**
+     * Affiche toutes les clés d'un Noeud (pour le visualiser)
+     * 
+     * @param n Le noeud.
+     */
+    public static void afficheClesNoeud(Noeud n) {
+        // Parcours des clés
+        n.getTabCle().stream().forEach((str) -> {
+            System.out.print(str + ";");
+        });
+        System.out.println("");
+    }
 }

@@ -58,6 +58,7 @@ public class Arbre {
         while(!n.isFeuille()) {
             // On cherche le pointeur correct suivant
             n = n.rechercheNoeudSuivant(str);
+            System.out.println("Noeud n : " + AffichageConsole.afficheClesNoeud(n));
         }
         
         // Quand on arrive ici, on a trouvé la feuille

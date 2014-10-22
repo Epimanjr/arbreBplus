@@ -73,9 +73,9 @@ public class Noeud {
      * @return le nouveau noeud
      */
     public Noeud split() {
-        System.out.println("** AVANT SPLIT **");
+        /*System.out.println("** AVANT SPLIT **");
         System.out.println("Noeud sur lequel on fait le split = feuille ? " + this.isFeuille());
-        AffichageConsole.afficherArbre(arbre);
+        AffichageConsole.afficherArbre(arbre);*/
 
         // Si le Noeud père n'existe pas, alors on le créer
         boolean nouvelleRacine = false;
@@ -127,8 +127,8 @@ public class Noeud {
             noeudPere.getTabPointeurs().add(0, this);
         }
 
-        System.out.println("** APRES SPLIT **");
-        AffichageConsole.afficherArbre(arbre);
+        /*System.out.println("** APRES SPLIT **");
+        AffichageConsole.afficherArbre(arbre);*/
         // On renvoit le nouveau noeud
         return nouveauNoeud;
     }
