@@ -14,12 +14,17 @@ public class Personne {
     private String nom;
     private int age;
 
+    public Personne() {
+        this.nom = "";
+        this.age = 0;
+    }
+    
     public Personne(String nom, int age) {
         this.nom = nom;
         this.age = age;
     }
 
-    public Personne chargerDepuisFichier(String cheminFichier) {
+    public static Personne chargerDepuisFichier(String cheminFichier) {
         Personne p;
         String no = "";
         int ag = 0;
