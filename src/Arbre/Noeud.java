@@ -74,8 +74,8 @@ public class Noeud {
      */
     public Noeud split() {
         /*System.out.println("** AVANT SPLIT **");
-        System.out.println("Noeud sur lequel on fait le split = feuille ? " + this.isFeuille());
-        AffichageConsole.afficherArbre(arbre);*/
+         System.out.println("Noeud sur lequel on fait le split = feuille ? " + this.isFeuille());
+         AffichageConsole.afficherArbre(arbre);*/
 
         // Si le Noeud père n'existe pas, alors on le créer
         boolean nouvelleRacine = false;
@@ -98,9 +98,8 @@ public class Noeud {
 
         // Ajout des valeurs
         int indice = tabCle.size() / 2;
-       
-        String cle = tabCle.get(indice);
 
+        String cle = tabCle.get(indice);
 
         if (nouveauNoeud.isFeuille()) {
             for (int i = indice; i < tabCle.size(); i++) {
@@ -108,29 +107,35 @@ public class Noeud {
                 nouveauNoeud.ajouterValeur(tabCle.get(i), tabPointeurs.get(i));
             }
         } else {
-            for (int i =  indice; i < tabCle.size(); i++) {
+            for (int i = indice; i < tabCle.size(); i++) {
                 // Changement du noeud père
-                ((Noeud)(tabPointeurs.get(i + 1))).setNoeudPere(nouveauNoeud);
+                ((Noeud) (tabPointeurs.get(i + 1))).setNoeudPere(nouveauNoeud);
                 nouveauNoeud.getTabPointeurs().add(tabPointeurs.get(i + 1));
             }
+
+            //old line :
+            //nouveauNoeud.getTabCle().add(tabCle.get(tabCle.size()-1));
             
-            // PROBLEME
-            nouveauNoeud.getTabCle().add(tabCle.get(tabCle.size()-1));
-            
-            
+            //TEST DE RESOLUTION
+            int compteur = nouveauNoeud.getOrdre();
+            while (compteur >= 3) {
+                nouveauNoeud.getTabCle().add(tabCle.get(tabCle.size() - (compteur - 2)));
+                compteur--;
+            }
+
         }
 
-        int indiceTmp = (ordre%2==0) ? indice+1 : indice;
+        int indiceTmp = (ordre % 2 == 0) ? indice + 1 : indice;
         for (int i = 0; i < indiceTmp; i++) {
             // Suppression de cette clé du Noeud actuel
             this.tabCle.remove(indice);
-            
-            if(this.isFeuille()) {
+
+            if (this.isFeuille()) {
                 this.tabPointeurs.remove(indice);
             } else {
-                this.tabPointeurs.remove(indice+1);
+                this.tabPointeurs.remove(indice + 1);
             }
-            
+
         }
 
         // Mise à jour des deux taux de remplissage
@@ -143,7 +148,7 @@ public class Noeud {
         }
 
         /*System.out.println("** APRES SPLIT **");
-        AffichageConsole.afficherArbre(arbre);*/
+         AffichageConsole.afficherArbre(arbre);*/
         // On renvoit le nouveau noeud
         return nouveauNoeud;
     }
