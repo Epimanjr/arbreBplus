@@ -29,7 +29,7 @@ public class TestPersonne {
         for(int i=1;i<51;i++) {
             // Il faut mettre le dossier des données dans C:/DONNEES
             // Ex : C:/DONNEES/F1.txt
-            chemin = "C:\\DONNEES\\F" + i + ".txt";
+            chemin = "Fichiers/F" + i + ".txt";
             liste.add(Personne.chargerDepuisFichier(chemin));
             System.out.println(liste.get(i-1));
         }
