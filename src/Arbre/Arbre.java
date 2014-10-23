@@ -95,6 +95,39 @@ public class Arbre {
             n.ajouterValeur(cle, valeur);
 
         }
+    }
+    
+    public String chercherValeur(String cle) {
+        // Initialisation du résultat
+        String res = "Valeur non trouvee";
         
+        // On recherche le noeud dans lequel se trouve la cle
+        Noeud n = this.recherche(cle);
+        
+        // On récupère l'indice
+        int indice = -1;
+        if(n.getTabCle().contains(cle)) {
+            indice = n.getTabCle().indexOf(cle);
+        }
+        
+        // On récupère la valeur
+        if(indice != (-1)) {
+            res = n.getTabPointeurs().get(indice).toString();
+        }
+        
+        return res;
+    }
+    
+    /**
+     * Supprime une cle (et sa valeur correspondante) dans l'arbre.
+     * 
+     * @param cle la cle que l'on souhaite supprimer.
+     */
+    public void suppression(String cle) {
+        // On recherche le noeud dans lequel se trouve la valeur à supprimer
+        Noeud n = this.recherche(cle);
+        
+        // Et on la supprime
+        n.supprimerCle(cle);
     }
 }

@@ -446,22 +446,30 @@ public class Noeud {
         this.tauxRemplissage = tauxRemplissage;
     }
 
-    /*
-     void insererFeuille(String cle, String valeur) {
-     // S'il y a de la place dans la feuille
-     if (this.tauxRemplissage < 100) {
-     // On insère la clé
-            
-     // On fait pointer la clé vers la valeur
-            
-     // S'il n'y a plus de place
-     } else {
-     // On split le noeud plein
-     Noeud nouveau_noeud = this.split();
-            
-     // On insère dans le nouveau noeud
-     nouveau_noeud.insererFeuille(cle, valeur);
-     }
-     }
+    /**
+     * Gestion de la suppression d'une cle dans le noeud.
+     * Cas general implemente
+     * Cas particulier non implemente
+     * 
+     * @param cle .
+     * @return vrai si la suppression est effectuee avec succes
      */
+    public boolean supprimerCle(String cle) {
+        
+        // Recherche si la liste des cles contient la cle voulue
+        boolean contient = this.tabCle.contains(cle);
+        if(contient) {
+            // Recuperation de l'indice
+            int indiceCle = this.tabCle.indexOf(cle);
+            
+            // Suppression de la cle
+            this.tabCle.remove(indiceCle);
+            // Suppression de la valeur (pointeur)
+            this.tabPointeurs.remove(indiceCle);
+            
+            // Return true, car suppression effectuee avec succes
+            return true;
+        }
+        return false;
+    }
 }
