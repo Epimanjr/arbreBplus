@@ -42,8 +42,11 @@ public class AffichageConsole {
         // Si c'est une feuille ou bien une racine
         if (n.isFeuille() || n.getTabPointeurs().isEmpty()) {
             // On affiche les clés.
-            for (String str : n.getTabCle()) {
-                System.out.println(indent + "--->" + str);
+            //for (String str : n.getTabCle()) {
+                //System.out.println(indent + "--->" + str);
+            //}
+            for (int i =0;i<n.getTabCle().size();i++) {
+                System.out.println(indent + "--->" + n.getTabCle().get(i) + n.getTabPointeurs().get(i));
             }
         } else {
             /* Cas général : avec une liste de pointeurs vers les Noeuds intermédiaires */
