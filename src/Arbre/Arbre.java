@@ -58,8 +58,7 @@ public class Arbre {
         while (!n.isFeuille()) {
             // On cherche le pointeur correct suivant
             n = n.rechercheNoeudSuivant(str);
-            System.out.print("Noeud n : ");
-            System.out.print(AffichageConsole.afficheClesNoeud(n));
+
         }
 
         // Quand on arrive ici, on a trouvé la feuille
@@ -86,8 +85,6 @@ public class Arbre {
      * @param valeur valeurs
      */
     public void insertion(String cle, String valeur) {
-        AffichageConsole.afficherArbre(this);
-        System.out.println("\n\t***INSERTION DE " + cle + "***");
         // On recherche le noeud dans lequel on va insérer la valeur
         Noeud n = this.recherche(cle);
 
@@ -99,6 +96,5 @@ public class Arbre {
 
         }
         
-        System.out.println("\t***FIN INSERTION DE " + cle + "***\n");
     }
 }

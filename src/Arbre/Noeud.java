@@ -73,9 +73,6 @@ public class Noeud {
      * @return le nouveau noeud
      */
     public Noeud split() {
-        /*System.out.println("** AVANT SPLIT **");
-         System.out.println("Noeud sur lequel on fait le split = feuille ? " + this.isFeuille());
-         AffichageConsole.afficherArbre(arbre);*/
 
         // Si le Noeud père n'existe pas, alors on le créer
         boolean nouvelleRacine = false;
@@ -93,7 +90,6 @@ public class Noeud {
         nouveauNoeud.setNoeudPere(noeudPere);
         nouveauNoeud.setRacine(false);
         nouveauNoeud.setFeuille(feuille);
-        System.out.println("Nouveau noeud = feuille ?" + nouveauNoeud.isFeuille());
         nouveauNoeud.setOrdre(ordre);
 
         // Ajout des valeurs
@@ -147,8 +143,6 @@ public class Noeud {
             noeudPere.getTabPointeurs().add(0, this);
         }
 
-        /*System.out.println("** APRES SPLIT **");
-         AffichageConsole.afficherArbre(arbre);*/
         // On renvoit le nouveau noeud
         return nouveauNoeud;
     }
@@ -192,7 +186,6 @@ public class Noeud {
      * @return le noeud en question
      */
     public Noeud rechercheNoeudSuivant(String str) {
-        System.out.println("** RECHERCHE DU NOEUD SUIVANT : ***\nListe des clés : " + AffichageConsole.afficheClesNoeud(this) + "***\nListe des pointeurs : " + AffichageConsole.affichePointeursNoeud(this) + "***");
         // Initialisation du résultat
         Noeud n = null;
 
