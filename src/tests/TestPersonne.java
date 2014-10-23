@@ -13,6 +13,11 @@ public class TestPersonne {
 
     public static void main(String[] args) {
         
+        //Parcourir tous les fichiers
+        //Utiliser la méthode charger de Personne
+        //Stocker les personnes (liste)
+        //Créer l'arbre de personnes
+        
     }
     
 }
