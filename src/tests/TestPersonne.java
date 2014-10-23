@@ -35,7 +35,7 @@ public class TestPersonne {
         System.out.println("");
         
         // Création d'un arbre
-        Arbre b = new Arbre(3, liste.get(1).getAge() + "", liste.get(1).getNom());
+        Arbre b = new Arbre(3, liste.get(0).getAge() + "", liste.get(0).getNom());
         // Insertions
         for(int i=1;i<50;i++) {
             b.insertion(liste.get(i).getAge() + "", liste.get(i).getNom());
@@ -45,14 +45,14 @@ public class TestPersonne {
         AffichageConsole.afficherArbre(b);
         
         // Création d'un arbre
-        Arbre b2 = new Arbre(3, liste.get(1).getNom(), liste.get(1).getAge() + "");
+        Arbre b2 = new Arbre(3, liste.get(0).getNom(), liste.get(0).getAge() + "");
         // Insertions
         for(int i=1;i<50;i++) {
-            b2.insertion(liste.get(i).getNom(), liste.get(i).getAge() + "");
+            //b2.insertion(liste.get(i).getNom(), liste.get(i).getAge() + "");
         }
-        System.out.println("\nTaille de la racine : " + b.getRacine().getTabCle().size());
+        //System.out.println("\nTaille de la racine : " + b2.getRacine().getTabCle().size());
         // Affichage de l'arbre
-        AffichageConsole.afficherArbre(b2);
+        //AffichageConsole.afficherArbre(b2);
         
     }
     

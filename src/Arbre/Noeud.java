@@ -208,7 +208,7 @@ public class Noeud {
                     break;
                 }
             } catch (Exception e) {
-                if (str.compareTo(tabCle.get(i)) == (-1)) {
+                if (str.compareTo(tabCle.get(i)) < 0) {
                     n = (Noeud) tabPointeurs.get(i);
                     break;
                 }
@@ -253,7 +253,7 @@ public class Noeud {
 
                 }
             } else {
-                if (str.compareTo(tabCle.get(0)) == (-1)) {
+                if (str.compareTo(tabCle.get(0)) < 0) {
                     ajouter = true;
                 }
 
@@ -274,7 +274,7 @@ public class Noeud {
                             ajouter = true;
                         }
                     } else {
-                        if (str.compareTo(tabCle.get(i)) == (-1)) {
+                        if (str.compareTo(tabCle.get(i)) < 0) {
                             ajouter = true;
 
                         }
@@ -333,13 +333,13 @@ public class Noeud {
 
         // Si plus petit que le premier élément, alors on l'insère au début7
         if (!tabCle.isEmpty()) {
-            if (str.compareTo(tabCle.get(0)) == (-1)) {
+            if (str.compareTo(tabCle.get(0)) < 0) {
                 tabCle.add(0, str);
                 indice = 0;
             } else {
                 for (int i = 1; i < tabCle.size(); i++) {
                     // Si plus petit, on l'ajoute avant
-                    if (str.compareTo(tabCle.get(i)) == (-1)) {
+                    if (str.compareTo(tabCle.get(i)) < 0) {
                         tabCle.add(i, str);
                         indice = i;
                         ajouter = true;
@@ -378,7 +378,7 @@ public class Noeud {
             int indice = -1;
             for (int i = 0; i < tabPointeurs.size(); i++) {
                 noeudCaste = (Noeud) tabPointeurs.get(i);
-                if (nn.getTabCle().get(0).compareTo(noeudCaste.getTabCle().get(0)) == (-1)) {
+                if (nn.getTabCle().get(0).compareTo(noeudCaste.getTabCle().get(0)) < 0) {
                     indice = i;
                     break;
                 }
