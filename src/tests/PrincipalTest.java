@@ -17,7 +17,7 @@ public class PrincipalTest {
     public static void main(String[] args) {
         // Création d'un arbre
         Arbre b = new Arbre(3, "5", "toto");
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 300; i++) {
             int cle = (int) (Math.random() * 100);
             String scle = ""+cle;
             b.insertion(scle, "VALEUR");

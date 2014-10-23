@@ -21,7 +21,7 @@ public class TestOrdre4 {
 
         // Création d'un arbre
         Arbre b = new Arbre(4, "5", "toto");
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 200; i++) {
             int cle = (int) (Math.random() * 100);
             String scle = "" + cle;
             b.insertion(scle, "VALEUR");

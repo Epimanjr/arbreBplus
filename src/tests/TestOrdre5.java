@@ -29,7 +29,7 @@ public class TestOrdre5 {
             // Affichage de l'arbre
             AffichageConsole.afficherArbre(b);
 
-            //sc.nextLine();
+            sc.nextLine();
         }
 
         System.out.println("\nTaille de la racine : " + b.getRacine().getTabCle().size());
